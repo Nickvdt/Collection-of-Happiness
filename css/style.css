@@ -1,0 +1,133 @@
+*, *::before, *::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Ubuntu", sans-serif;
+}
+
+body {
+  font-size: 2rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header__logo {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  font-size: 4rem;
+  border-radius: 5rem;
+}
+
+.collection {
+  display: flex;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  padding: 4rem;
+  height: 80vh;
+}
+.collection__section {
+  display: flex;
+}
+.collection__section--left {
+  flex-direction: column;
+  justify-content: space-between;
+}
+.collection__section--right {
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.leftul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  width: 70%;
+}
+.leftul__li {
+  position: relative;
+  display: flex;
+  width: 22rem;
+  height: 20rem;
+}
+.leftul__li--titel {
+  position: absolute;
+  bottom: 0;
+}
+.leftul__li--datum {
+  top: 0;
+  right: 0;
+  position: absolute;
+}
+.leftul__li--img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.leftul__li--img:hover {
+  cursor: pointer;
+}
+
+.rightul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0rem 2rem;
+  width: 80%;
+  height: 80%;
+}
+.rightul__li {
+  list-style: none;
+  width: 100%;
+  position: relative;
+}
+.rightul__li--figure {
+  display: flex;
+  justify-content: space-between;
+}
+.rightul__li--titel {
+  bottom: 0;
+  position: absolute;
+}
+.rightul__li--datum {
+  top: 0;
+  right: 0;
+  position: absolute;
+}
+.rightul__li--img {
+  height: 21rem;
+  width: 100%;
+  object-fit: cover;
+}
+.rightul__li--downloadButton {
+  border: none;
+  font-size: 2rem;
+  width: 20rem;
+  height: 3rem;
+  border-radius: 0.7rem;
+}
+.rightul__li--downloadButton:hover {
+  cursor: pointer;
+}
+.rightul__li--source {
+  text-decoration: none;
+  color: #000000;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*# sourceMappingURL=style.css.map */
