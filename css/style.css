@@ -59,6 +59,10 @@ body {
   width: 22rem;
   height: 20rem;
 }
+.leftul__li:hover {
+  transform: scale(1.1);
+  transition: 0.4s all;
+}
 .leftul__li--titel {
   position: absolute;
   bottom: 0;
