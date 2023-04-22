@@ -32,17 +32,20 @@
         display: flex;
         width: 22rem;
         height: 20rem;
+        color: white;
+        
         &:hover{
             transform: scale(1.1);
             transition: 0.4s all;
         }
         &--titel{
             position: absolute;
-            bottom: 0;
+            bottom: 1%;
+            left: 1.5%;
         }
         &--datum{
-            top: 0;
-            right: 0;
+            top: 1%;
+            right: 1.5%;
             position: absolute;
         }
         &--img{
@@ -67,6 +70,7 @@
     padding: 0rem 2rem;
     width: 80%;
     height: 80%;
+    
     &__li{
         list-style: none;
         width: 100%;
@@ -74,20 +78,28 @@
         &--figure{
             display: flex;
             justify-content: space-between;
+            
         }
         &--titel{
-            bottom: 0;
+            left: 1%;
+            bottom: 2.5%;
             position: absolute;
+            color: white;
         }
         &--datum{
-            top: 0;
-            right: 0;
+            top: 1%;
+            right: 1%;
             position: absolute;
+            color: white;
         }
         &--img{
             height: 21rem;
             width: 100%;
             object-fit: cover;
+        }
+        &--tekst{
+            font-size: 1.6rem;
+            padding-bottom: 0.5rem;
         }
         &--downloadButton{
             border: none;
@@ -104,6 +116,9 @@
             text-decoration: none;
             color: #000000;
 
+            &:hover{
+                cursor: pointer;
+            }
         }
     }
 

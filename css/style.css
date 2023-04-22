@@ -58,6 +58,7 @@ body {
   display: flex;
   width: 22rem;
   height: 20rem;
+  color: white;
 }
 .leftul__li:hover {
   transform: scale(1.1);
@@ -65,11 +66,12 @@ body {
 }
 .leftul__li--titel {
   position: absolute;
-  bottom: 0;
+  bottom: 1%;
+  left: 1.5%;
 }
 .leftul__li--datum {
-  top: 0;
-  right: 0;
+  top: 1%;
+  right: 1.5%;
   position: absolute;
 }
 .leftul__li--img {
@@ -100,18 +102,25 @@ body {
   justify-content: space-between;
 }
 .rightul__li--titel {
-  bottom: 0;
+  left: 1%;
+  bottom: 2.5%;
   position: absolute;
+  color: white;
 }
 .rightul__li--datum {
-  top: 0;
-  right: 0;
+  top: 1%;
+  right: 1%;
   position: absolute;
+  color: white;
 }
 .rightul__li--img {
   height: 21rem;
   width: 100%;
   object-fit: cover;
+}
+.rightul__li--tekst {
+  font-size: 1.6rem;
+  padding-bottom: 0.5rem;
 }
 .rightul__li--downloadButton {
   border: none;
@@ -126,6 +135,9 @@ body {
 .rightul__li--source {
   text-decoration: none;
   color: #000000;
+}
+.rightul__li--source:hover {
+  cursor: pointer;
 }
 
 .footer {

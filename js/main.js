@@ -119,6 +119,26 @@ class LeftPanel {
 class RightPanel{
   mainElement;
   rightPanelElement;
+
+  constructor(mainElement, data){
+    this.data = data;
+    this.mainElement = mainElement;
+
+    this.rightPanelElement = document.createElement("section");
+    this.rightPanelElement.classList = "collection__section collection__section--right";
+
+    this.detailCard = new DetailCard(this.rightPanelElement, data)
+  }
+  render(){
+    this.mainElement.appendChild(this.rightPanelElement);
+    this.detailCard.render();
+
+  }
+}
+
+class DetailCard{
+  placeToRenderDetailCard;
+
   rightUlElement;
   rightLiElement;
   dateElement;
@@ -128,14 +148,10 @@ class RightPanel{
   figureElement;
   downloadElement;
   sourceElement;
-  
-
-  constructor(mainElement){
-    this.mainElement = mainElement;
-
-    this.rightPanelElement = document.createElement("section");
-    this.rightPanelElement.classList = "collection__section collection__section--right";
-
+  data;
+  constructor(placeToRenderDetailCard, data){
+    this.placeToRenderDetailCard = placeToRenderDetailCard
+    this.data = data
     this.rightUlElement = document.createElement("ul");
     this.rightUlElement.classList = "rightul";
 
@@ -150,11 +166,11 @@ class RightPanel{
 
     this.dateElement = document.createElement("p");
     this.dateElement.classList = "rightul__li--datum";
-    this.dateElement.innerText = "Datum";
+    this.dateElement.innerText = this.data.episodes[1]["date (dd-mm-yyyy)"];
 
     this.titleElement = document.createElement("p");
     this.titleElement.classList = "rightul__li--titel";
-    this.titleElement.innerText = "Titel";
+    this.titleElement.innerText = this.data.episodes[1]["title"];
 
     this.imageElement = document.createElement("img");
     this.imageElement.classList = "rightul__li--img";
@@ -162,7 +178,7 @@ class RightPanel{
 
     this.textElement = document.createElement("p");
     this.textElement.classList = "rightul__li--tekst";
-    this.textElement.innerText = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim quia impedit, facilis magnam ratione in voluptas nam fuga nemo non natus, illum aperiam, quidem dolores minus consequatur aut perferendis blanditiis?"
+    this.textElement.innerText = this.data.episodes[1]["summary"];
 
     this.figureElement = document.createElement("figure");
     this.figureElement.classList = "rightul__li--figure";
@@ -174,14 +190,10 @@ class RightPanel{
     this.sourceElement = document.createElement("a");
     this.sourceElement.classList = "rightul__li--source";
     this.sourceElement.innerText = "Source >"
-
-
-  }
-  DetailCard() {
+    this.sourceElement.setAttribute("href", this.data.episodes[1]["url"]);
   }
   render(){
-    this.mainElement.appendChild(this.rightPanelElement);
-    this.rightPanelElement.appendChild(this.rightUlElement);
+    this.placeToRenderDetailCard.appendChild(this.rightUlElement);
     this.rightUlElement.appendChild(this.rightLiElement);
     this.rightLiElement.appendChild(this.dateElement);
     this.rightLiElement.appendChild(this.titleElement);
@@ -210,8 +222,6 @@ class Main{
     this.mainElement.classList = "collection";
     this.leftPanel = new LeftPanel(this.mainElement, data);
     this.rightPanel = new RightPanel(this.mainElement, data);
-    
-
   }
   render(){
     this.placeToRenderMain.appendChild(this.mainElement);
