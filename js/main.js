@@ -59,10 +59,16 @@ class LeftPanel {
   mainElement;
   leftPanelElement;
   leftUlElement;
+  leftLiElement;
+  dateElement;
+  titleElement;
+  imageElement;
+  leftLiElement;
+  data;
 
-  constructor(mainElement) {
+  constructor(mainElement, data) {
+    this.data = data
     this.mainElement = mainElement;
-
     this.leftPanelElement = document.createElement("section");
     this.leftPanelElement.classList = "collection__section  collection__section--left";
 
@@ -70,26 +76,30 @@ class LeftPanel {
     this.leftUlElement.classList = "leftul";
 
     for (let i = 0; i < 4; i++) {
-      const leftLiElement = document.createElement("li");
-      leftLiElement.classList = "leftul__li";
+      this.randomIndex = Math.floor(Math.random() * 7); // Genereerd een willekeurig getal tussen 0 en 6
 
-      const dateElement = document.createElement("p");
-      dateElement.classList = "leftul__li--datum";
-      dateElement.innerText = "Datum";
+      this.episode = data.episodes[this.randomIndex];
+      this.imageSrc = "img/" + this.randomIndex + ".webp";
 
-      const titleElement = document.createElement("p");
-      titleElement.classList = "leftul__li--titel";
-      titleElement.innerText = "Titel";
+      this.leftLiElement = document.createElement("li");
+      this.leftLiElement.classList = "leftul__li";
 
-      const imageElement = document.createElement("img");
-      imageElement.classList = "leftul__li--img";
-      imageElement.setAttribute("src", "img/IMG_0547_270_270_s_c1.webp");
+      this.dateElement = document.createElement("p");
+      this.dateElement.classList = "leftul__li--datum";
+      this.dateElement.innerText = this.episode["date (dd-mm-yyyy)"];
 
-      leftLiElement.appendChild(dateElement);
-      leftLiElement.appendChild(titleElement);
-      leftLiElement.appendChild(imageElement);
+      this.titleElement = document.createElement("p");
+      this.titleElement.classList = "leftul__li--titel";
+      this.titleElement.innerText = this.episode["title"];
 
-      this.leftUlElement.appendChild(leftLiElement);
+      this.imageElement = document.createElement("img");
+      this.imageElement.classList = "leftul__li--img";
+      this.imageElement.setAttribute("src", this.imageSrc);
+
+      this.leftLiElement.appendChild(this.dateElement);
+      this.leftLiElement.appendChild(this.titleElement);
+      this.leftLiElement.appendChild(this.imageElement);
+      this.leftUlElement.appendChild(this.leftLiElement);
     }
   }
 
@@ -142,7 +152,7 @@ class RightPanel{
 
     this.imageElement = document.createElement("img");
     this.imageElement.classList = "rightul__li--img";
-    this.imageElement.setAttribute("src", "img/IMG_0547_270_270_s_c1.webp");
+    this.imageElement.setAttribute("src", "img/1.webp");
 
     this.textElement = document.createElement("p");
     this.textElement.classList = "rightul__li--tekst";
@@ -161,7 +171,7 @@ class RightPanel{
 
 
   }
-  DetailCard(data) {
+  DetailCard() {
   }
   render(){
     this.mainElement.appendChild(this.rightPanelElement);
@@ -187,13 +197,13 @@ class Main{
   mainElement;
   leftPanel;
   rightPanel;
-  constructor(placeToRenderMain){
+  constructor(placeToRenderMain, data){
     this.placeToRenderMain = document.getElementsByTagName(placeToRenderMain)[0];
 
     this.mainElement = document.createElement("main");
     this.mainElement.classList = "collection";
-    this.leftPanel = new LeftPanel(this.mainElement);
-    this.rightPanel = new RightPanel(this.mainElement);
+    this.leftPanel = new LeftPanel(this.mainElement, data);
+    this.rightPanel = new RightPanel(this.mainElement, data);
     
 
   }
@@ -231,29 +241,21 @@ class App {
   header;
   footer;
   main;
-  getdata;
+  getData;
   
   constructor() {
-    this.header = new Header("body");
-    this.header.render();
-
-    this.main = new Main("body")
-    this.main.render();
-    this.footer = new Footer("body");
-    this.footer.render();
-
     this.getData = new GetData("./data/data.json");
-    this.getData
-    .getData().then((data) => {
-
+    this.getData.getData().then((data) => {
+      this.header = new Header("body");
+      this.header.render();
+  
+      this.main = new Main("body", data)
+      this.main.render();
+      this.footer = new Footer("body");
+      this.footer.render();
     });
-
-
     
   }
 }
 
 const app = new App();
-
-
-
