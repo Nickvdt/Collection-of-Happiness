@@ -75,8 +75,14 @@ class LeftPanel {
     this.leftUlElement = document.createElement("ul");
     this.leftUlElement.classList = "leftul";
 
+    const generatedIndexes = [];
     for (let i = 0; i < 4; i++) {
-      this.randomIndex = Math.floor(Math.random() * 7); // Genereerd een willekeurig getal tussen 0 en 6
+      let randomIndex;
+      do {
+        this.randomIndex = Math.floor(Math.random() * 7);
+      } while (generatedIndexes.includes(this.randomIndex));
+
+      generatedIndexes.push(this.randomIndex);
 
       this.episode = data.episodes[this.randomIndex];
       this.imageSrc = "img/" + this.randomIndex + ".webp";
