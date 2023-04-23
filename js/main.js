@@ -65,31 +65,31 @@ class LeftPanel {
   imageElement;
   leftLiElement;
   data;
-
-  constructor(mainElement, data) {
+  constructor(mainElement, data, onClick) {
     this.data = data
     this.mainElement = mainElement;
+    this.onClick = onClick;
     this.leftPanelElement = document.createElement("section");
     this.leftPanelElement.classList = "collection__section  collection__section--left";
 
     this.leftUlElement = document.createElement("ul");
     this.leftUlElement.classList = "leftul";
 
-    const generatedIndexes = [];
+    this.generatedIndexes = [];
+    
     for (let i = 0; i < 4; i++) {
       let randomIndex;
       do {
         this.randomIndex = Math.floor(Math.random() * 7);
-      } while (generatedIndexes.includes(this.randomIndex));
+      } while (this.generatedIndexes.includes(this.randomIndex));
 
-      generatedIndexes.push(this.randomIndex);
-
+      this.generatedIndexes.push(this.randomIndex);
       this.episode = data.episodes[this.randomIndex];
       this.imageSrc = "img/" + this.randomIndex + ".webp";
-
+      this.id = this.randomIndex;
       this.leftLiElement = document.createElement("li");
       this.leftLiElement.classList = "leftul__li";
-
+      this.leftLiElement.setAttribute("id", this.id);
       this.dateElement = document.createElement("p");
       this.dateElement.classList = "leftul__li--datum";
       this.dateElement.innerText = this.episode["date (dd-mm-yyyy)"];
@@ -112,6 +112,12 @@ class LeftPanel {
   render() {
     this.mainElement.appendChild(this.leftPanelElement);
     this.leftPanelElement.appendChild(this.leftUlElement);
+
+    for (let i = 0; i < 4; i++) {
+      document.getElementById(this.generatedIndexes[i]).addEventListener("click", () => {
+        this.onClick(this.generatedIndexes[i]);
+      });
+    }
   }
 }
 
@@ -132,7 +138,9 @@ class RightPanel{
   render(){
     this.mainElement.appendChild(this.rightPanelElement);
     this.detailCard.render();
-
+  }
+  update(episodeSelected) {
+    this.detailCard.updateData(episodeSelected);
   }
 }
 
@@ -209,6 +217,16 @@ class DetailCard{
     this.figureElement.appendChild(this.audioElement);
     this.figureElement.appendChild(this.sourceElement);
   }
+
+  updateData(episodeSelected) {
+    this.dateElement.innerText = this.data.episodes[episodeSelected]["date (dd-mm-yyyy)"];
+    this.titleElement.innerText = this.data.episodes[episodeSelected]["title"];
+    this.imageSrc = "img/" + episodeSelected + ".webp";
+    this.imageElement.setAttribute("src", this.imageSrc);
+    this.textElement.innerText = this.data.episodes[episodeSelected]["summary"];
+    this.audioElement.setAttribute("src", this.data.episodes[episodeSelected]["audio"]);
+    this.sourceElement.setAttribute("href", this.data.episodes[episodeSelected]["url"]);
+  }
 }
 
 class Main{
@@ -221,14 +239,18 @@ class Main{
 
     this.mainElement = document.createElement("main");
     this.mainElement.classList = "collection";
-    this.leftPanel = new LeftPanel(this.mainElement, data);
+    this.leftPanel = new LeftPanel(this.mainElement, data, this.onClick.bind(this));
     this.rightPanel = new RightPanel(this.mainElement, data);
   }
   render(){
     this.placeToRenderMain.appendChild(this.mainElement);
     this.leftPanel.render();
     this.rightPanel.render();
-    
+  }
+
+  onClick(episodeSelected) {
+    console.log(episodeSelected);
+    this.rightPanel.update(episodeSelected);
   }
 }
 
