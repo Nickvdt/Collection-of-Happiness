@@ -146,7 +146,7 @@ class DetailCard{
   imageElement;
   textElement;
   figureElement;
-  downloadElement;
+  audioElement;
   sourceElement;
   data;
   constructor(placeToRenderDetailCard, data){
@@ -183,9 +183,10 @@ class DetailCard{
     this.figureElement = document.createElement("figure");
     this.figureElement.classList = "rightul__li--figure";
 
-    this.downloadElement = document.createElement("button");
-    this.downloadElement.classList = "rightul__li--downloadButton";
-    this.downloadElement.innerText = "Audio";
+    this.audioElement = document.createElement("audio");
+    this.audioElement.classList = "rightul__li--audio";
+    this.audioElement.setAttribute("controls", "");
+    this.audioElement.setAttribute("src", this.data.episodes[1]["audio"]);
 
     this.sourceElement = document.createElement("a");
     this.sourceElement.classList = "rightul__li--source";
@@ -205,7 +206,7 @@ class DetailCard{
     this.rightUlElement.appendChild(this.rightLi3Element);
     this.rightLi3Element.appendChild(this.figureElement);
 
-    this.figureElement.appendChild(this.downloadElement);
+    this.figureElement.appendChild(this.audioElement);
     this.figureElement.appendChild(this.sourceElement);
   }
 }

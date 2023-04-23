@@ -119,18 +119,12 @@ body {
   object-fit: cover;
 }
 .rightul__li--tekst {
-  font-size: 1.6rem;
-  padding-bottom: 0.5rem;
+  font-size: 1.5rem;
+  padding-bottom: 1.5rem;
 }
-.rightul__li--downloadButton {
-  border: none;
-  font-size: 2rem;
-  width: 20rem;
-  height: 3rem;
+.rightul__li--audio {
   border-radius: 0.7rem;
-}
-.rightul__li--downloadButton:hover {
-  cursor: pointer;
+  height: 2.8rem;
 }
 .rightul__li--source {
   text-decoration: none;
