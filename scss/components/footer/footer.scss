@@ -1,5 +1,11 @@
-.footer{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+@use "../../abstracts/colors";
+.footer {
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  padding: 2rem;
+  bottom: 0;
+  &__h4{
+    color: map-get(colors.$baseColors, "black");;
+  }
 }

@@ -6,17 +6,24 @@
 
 html {
   font-size: 62.5%;
-  font-family: "Ubuntu", sans-serif;
 }
 
 body {
   font-size: 2rem;
 }
 
+html {
+  font-family: "Ubuntu", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+}
+
 .header {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
 .header__logo {
   display: flex;
@@ -25,9 +32,11 @@ body {
   font-size: 4rem;
   border-radius: 5rem;
 }
+.header__tekst {
+  color: #000000;
+}
 
 .collection {
-  display: flex;
   display: grid;
   grid-template-columns: 50% 50%;
   padding: 4rem;
@@ -36,11 +45,7 @@ body {
 .collection__section {
   display: flex;
 }
-.collection__section--left {
-  flex-direction: column;
-  justify-content: space-between;
-}
-.collection__section--right {
+.collection__section--left, .collection__section--right {
   flex-direction: column;
   justify-content: space-between;
 }
@@ -58,7 +63,7 @@ body {
   display: flex;
   width: 22rem;
   height: 20rem;
-  color: white;
+  color: #FFFFFF;
 }
 .leftul__li:hover {
   transform: scale(1.1);
@@ -105,13 +110,13 @@ body {
   left: 1%;
   bottom: 2.5%;
   position: absolute;
-  color: white;
+  color: #FFFFFF;
 }
 .rightul__li--datum {
   top: 1%;
   right: 1%;
   position: absolute;
-  color: white;
+  color: #FFFFFF;
 }
 .rightul__li--img {
   height: 21rem;
@@ -135,9 +140,111 @@ body {
 }
 
 .footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  padding: 2rem;
+  bottom: 0;
+}
+.footer__h4 {
+  color: #000000;
+}
+
+@media screen and (max-width: 86.25rem) {
+  .leftul {
+    width: 100%;
+  }
+  .rightul {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 62.5rem) {
+  .collection {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  .collection__section--left {
+    order: 2;
+    padding-top: 8rem;
+  }
+  .collection__section--right {
+    order: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .rightul {
+    width: 90%;
+  }
+  .leftul {
+    width: 70%;
+    padding-bottom: 8rem;
+  }
+}
+@media screen and (max-width: 58.75rem) {
+  .leftul {
+    gap: 1rem;
+  }
+  .collection__section--left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media screen and (max-width: 46.875rem) {
+  .collection {
+    padding: 0;
+  }
+  .header {
+    display: block;
+  }
+}
+@media screen and (max-width: 41.625rem) {
+  .leftul {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 33.75rem) {
+  .header__tekst {
+    font-size: 3rem;
+  }
+  .rightul {
+    height: 95%;
+  }
+  .rightul__li--figure {
+    flex-direction: column;
+  }
+  .rightul__li--source {
+    margin-top: 1rem;
+  }
+}
+@media screen and (max-width: 31.25rem) {
+  .leftul__li {
+    width: auto;
+  }
+  .leftul__li--titel, .leftul__li--datum {
+    font-size: 1.5rem;
+  }
+  .footer {
+    font-size: 1.5rem;
+  }
+}
+@media screen and (max-width: 27.5rem) {
+  .rightul {
+    width: 90%;
+  }
+  .leftul__li {
+    width: 16rem;
+  }
+}
+@media screen and (max-width: 25.625rem) {
+  .header__tekst {
+    font-size: 2.5rem;
+  }
+  .footer__h4 {
+    font-size: 1.4rem;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

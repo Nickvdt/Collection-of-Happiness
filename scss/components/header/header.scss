@@ -1,8 +1,7 @@
+@use "../../abstracts/colors";
+@use "../../abstracts/mixins";
 .header{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
+    @include mixins.flexCenter;
     
     &__logo{
         display: flex;
@@ -10,5 +9,9 @@
         padding: 2rem;
         font-size: 4rem;
         border-radius: 5rem;
+    }
+
+    &__tekst{
+        color: map-get(colors.$baseColors, "black");
     }
 }

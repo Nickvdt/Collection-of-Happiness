@@ -1,0 +1,139 @@
+@media screen and (max-width: 86.25rem) { // 1380 pixels
+    .leftul {
+        width: 100%;
+    }
+
+    .rightul {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 62.5rem) { // 1000 pixels
+    .collection {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+
+        &__section {
+            &--left {
+                order: 2;
+                padding-top: 8rem;
+            }
+
+            &--right {
+                order: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+            }
+        }
+    }
+
+    .rightul {
+        width: 90%;
+    }
+
+    .leftul {
+        width: 70%;
+        padding-bottom: 8rem;
+    }
+}
+
+@media screen and (max-width: 58.75rem) { // 940 pixels
+    .leftul {
+        gap: 1rem;
+    }
+
+    .collection {
+        &__section {
+            &--left {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+
+}
+
+
+@media screen and (max-width: 46.875rem) { // 750 pixels
+    .collection {
+        padding: 0;
+    }
+    .header {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 41.625rem) { //666 pixels
+    .leftul {
+        width: 100%;
+    }
+
+}
+
+
+@media screen and (max-width: 33.75rem) { // 540 pixels
+    .header {
+        &__tekst {
+            font-size: 3rem;
+        }
+    }
+
+    .rightul {
+        height: 95%;
+        &__li {
+            &--figure {
+                flex-direction: column;
+            }
+
+            &--source {
+                margin-top: 1rem;
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 31.25rem) { // 500 pixels
+    .leftul {
+        &__li {
+            width: auto;
+            &--titel, &--datum{
+                font-size: 1.5rem;
+            }
+        }
+    }
+    .footer{
+        font-size: 1.5rem;
+    }
+    
+}
+
+@media screen and (max-width: 27.5rem) { // 440 pixels
+    .rightul {
+        width: 90%;
+    }
+
+    .leftul {
+        &__li {
+            width: 16rem;
+        }
+    }
+}
+
+@media screen and (max-width: 25.625rem) { // 410 pixels
+    .header{
+        &__tekst{
+            font-size: 2.5rem;
+        }
+    }
+    .footer{
+        &__h4{
+            font-size: 1.4rem;
+        }
+    }
+
+}
