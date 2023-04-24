@@ -65,10 +65,11 @@ class LeftPanel {
   imageElement;
   leftLiElement;
   data;
-  constructor(mainElement, data, onClick) {
+  constructor(mainElement, data, onClick, firstEpisode) {
     this.data = data
     this.mainElement = mainElement;
     this.onClick = onClick;
+    this.firstEpisode = firstEpisode;
     this.leftPanelElement = document.createElement("section");
     this.leftPanelElement.classList = "collection__section  collection__section--left";
 
@@ -112,12 +113,13 @@ class LeftPanel {
   render() {
     this.mainElement.appendChild(this.leftPanelElement);
     this.leftPanelElement.appendChild(this.leftUlElement);
-
+    
     for (let i = 0; i < 4; i++) {
       document.getElementById(this.generatedIndexes[i]).addEventListener("click", () => {
         this.onClick(this.generatedIndexes[i]);
       });
     }
+    this.firstEpisode(this.generatedIndexes[0])
   }
 }
 
@@ -141,6 +143,9 @@ class RightPanel{
   }
   update(episodeSelected) {
     this.detailCard.updateData(episodeSelected);
+  }
+  updateFirstEpisode(firstEpisode){
+    this.detailCard.renderFirstEpisode(firstEpisode);
   }
 }
 
@@ -174,19 +179,17 @@ class DetailCard{
 
     this.dateElement = document.createElement("p");
     this.dateElement.classList = "rightul__li--datum";
-    this.dateElement.innerText = this.data.episodes[1]["date (dd-mm-yyyy)"];
 
     this.titleElement = document.createElement("p");
     this.titleElement.classList = "rightul__li--titel";
-    this.titleElement.innerText = this.data.episodes[1]["title"];
+
 
     this.imageElement = document.createElement("img");
     this.imageElement.classList = "rightul__li--img";
-    this.imageElement.setAttribute("src", "img/1.webp");
 
     this.textElement = document.createElement("p");
     this.textElement.classList = "rightul__li--tekst";
-    this.textElement.innerText = this.data.episodes[1]["summary"];
+
 
     this.figureElement = document.createElement("figure");
     this.figureElement.classList = "rightul__li--figure";
@@ -194,12 +197,10 @@ class DetailCard{
     this.audioElement = document.createElement("audio");
     this.audioElement.classList = "rightul__li--audio";
     this.audioElement.setAttribute("controls", "");
-    this.audioElement.setAttribute("src", this.data.episodes[1]["audio"]);
 
     this.sourceElement = document.createElement("a");
     this.sourceElement.classList = "rightul__li--source";
     this.sourceElement.innerText = "Source >"
-    this.sourceElement.setAttribute("href", this.data.episodes[1]["url"]);
   }
   render(){
     this.placeToRenderDetailCard.appendChild(this.rightUlElement);
@@ -216,6 +217,16 @@ class DetailCard{
 
     this.figureElement.appendChild(this.audioElement);
     this.figureElement.appendChild(this.sourceElement);
+  }
+
+  renderFirstEpisode(firstEpisode){
+    this.dateElement.innerText = this.data.episodes[firstEpisode]["date (dd-mm-yyyy)"];
+    this.titleElement.innerText = this.data.episodes[firstEpisode]["title"];
+    this.imageSrc = "img/" + firstEpisode + ".webp";
+    this.imageElement.setAttribute("src", this.imageSrc);
+    this.textElement.innerText = this.data.episodes[firstEpisode]["summary"];
+    this.audioElement.setAttribute("src", this.data.episodes[firstEpisode]["audio"]);
+    this.sourceElement.setAttribute("href", this.data.episodes[firstEpisode]["url"]);
   }
 
   updateData(episodeSelected) {
@@ -239,7 +250,7 @@ class Main{
 
     this.mainElement = document.createElement("main");
     this.mainElement.classList = "collection";
-    this.leftPanel = new LeftPanel(this.mainElement, data, this.onClick.bind(this));
+    this.leftPanel = new LeftPanel(this.mainElement, data, this.onClick.bind(this), this.firstEpisode.bind(this) );
     this.rightPanel = new RightPanel(this.mainElement, data);
   }
   render(){
@@ -251,6 +262,10 @@ class Main{
   onClick(episodeSelected) {
     console.log(episodeSelected);
     this.rightPanel.update(episodeSelected);
+  }
+  firstEpisode(firstEpisode){
+    console.log(firstEpisode);
+    this.rightPanel.update(firstEpisode);
   }
 }
 
