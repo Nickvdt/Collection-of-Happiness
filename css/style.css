@@ -18,13 +18,13 @@ html {
 
 body {
   min-height: 100vh;
+  background: linear-gradient(0.35turn, #F7FD04 20%, #F9B208 45%, #F98404 70%, #FC5404 95%);
 }
 
 .header {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #F9B208;
   box-shadow: 0rem 0rem 1.5rem 0.2rem rgba(0, 0, 0, 0.5);
 }
 .header__logo {

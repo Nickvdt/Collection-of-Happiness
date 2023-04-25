@@ -2,7 +2,6 @@
 @use "../../abstracts/mixins";
 .header{
     @include mixins.flexCenter;
-    background-color: map-get(colors.$colorPalette, "yellow-medium");
     box-shadow: 0rem 0rem 1.5rem 0.2rem rgba(0, 0, 0, 0.5);
     &__logo{
         display: flex;
