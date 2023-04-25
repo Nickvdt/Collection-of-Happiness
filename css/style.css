@@ -24,6 +24,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #F9B208;
+  box-shadow: 0rem 0rem 1.5rem 0.2rem rgba(0, 0, 0, 0.5);
 }
 .header__logo {
   display: flex;
