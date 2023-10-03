@@ -1,0 +1,2 @@
+# Collection of Happiness
+Deze site biedt gebruikers de mogelijkheid om podcasts te ontdekken en te beluisteren. aan de linkerkant selecteer je een podcast, terwijl de bijbehorende informatie en een ingebouwde MP3-speler aan de rechterkant beschikbaar zijn. De HTML is gerenderd uit Javascript en voor de stijl is er gebruik gemaakt van SCSS.
